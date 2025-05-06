@@ -1,0 +1,2 @@
+# Tricksy Battle Consolidation Project - Paulina Strunnikova
+Hello, this program is currently unfiinished. What it does is just the first bit of the tricksy battle card game, which is shuffling the deck of 48 cards, excluding the kings, and picking out 8 cards randomly for you. Run the whole program at once to recieve your hand of randomly selected 8 cards from a shuffled deck.
