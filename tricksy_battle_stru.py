@@ -53,6 +53,6 @@ player_2_hand = deck[8:16]
 
 deck = deck[16:]
 
-print("Player 1's Hand: ")
+
 for card in player_1_hand:
-    print(card)
+    print(f"Player 1's hand: {card}")
