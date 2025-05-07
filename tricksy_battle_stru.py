@@ -45,22 +45,36 @@ deck = build_deck()
 shuffled_deck(deck)
 
 
-for drawn_card in deck[:8]:
-    print(drawn_card)
 
 player_1_hand = deck[:8]
 player_2_hand = deck[8:16]
-
 deck = deck[16:]
 
 
-for card in player_1_hand:
-    print(f"Player 1's hand: {card}")
+for card in deck[:8]:
+    print(card)
 
 def play_round(player_1_hand, player_2_hand):
     print("New round")
-    for i in range(len(player_1_hand)):
-        print(str(i+1)) + ": " + str(player_1_hand[i])
+    print("Player 1's hand: ")
+    for card in player_1_hand:
+        print(card)
+
+relevant_cards = [str(card) for card in player_1_hand]
+
+chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}")
+
+while chosen_card not in relevant_cards:
+    print("Chosen card not in your hand, please choose another: ")
+    chosen_card = input("Pick what card you want to play!: ")
 
 
-chosen_card = int(input("Pick what card you want to play!: ") + str(len(player_1_hand)))
+chosen_card_object = None
+for card in player_1_hand:
+    if str(card) == chosen_card:
+        chosen_card_object = card
+        print("You played this card:", chosen_card_object)
+        break
+
+if chosen_card_object:
+    print("You played this card:", chosen_card_object)
