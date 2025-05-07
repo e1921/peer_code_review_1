@@ -56,3 +56,11 @@ deck = deck[16:]
 
 for card in player_1_hand:
     print(f"Player 1's hand: {card}")
+
+def play_round(player_1_hand, player_2_hand):
+    print("New round")
+    for i in range(len(player_1_hand)):
+        print(str(i+1)) + ": " + str(player_1_hand[i])
+
+
+chosen_card = int(input("Pick what card you want to play!: ") + str(len(player_1_hand)))
