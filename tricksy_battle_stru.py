@@ -1,6 +1,7 @@
 # tricksy battle
 import os
 import random
+import time
 
 suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen']
@@ -50,6 +51,11 @@ def shuffled_deck(deck):
 deck = build_deck()
 shuffled_deck(deck)
 
+print("Shuffling the deck..")
+time.sleep(1)
+
+print("Dealing cards..")
+time.sleep(1)
 
 
 player_1_hand = deck[:8]
@@ -66,21 +72,33 @@ def play_round(player_1_hand, player_2_hand):
     for card in player_1_hand:
         print(card)
 
-relevant_cards = [str(card) for card in player_1_hand]
+    print("Player 1 is thinkning..")
+    time.sleep(2)
 
-chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}")
+    relevant_cards = [str(card) for card in player_1_hand]
 
-while chosen_card not in relevant_cards:
-    print("Chosen card not in your hand, please choose another: ")
-    chosen_card = input("Pick what card you want to play!: ")
+    chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}\n")
 
 
-chosen_card_object = None
-for card in player_1_hand:
-    if str(card) == chosen_card:
-        chosen_card_object = card
-        print("You played this card:", chosen_card_object)
-        break
+    while chosen_card not in relevant_cards:
+        print("Chosen card not in your hand, please choose another: ")
+        chosen_card = input("Pick what card you want to play!: ")
 
-if chosen_card_object:
-    print("You played this card:", chosen_card_object)
+
+    chosen_card_object = None
+    for card in player_1_hand:
+        if str(card) == chosen_card:
+            chosen_card_object = card
+            # print("Player 1 played this card:", chosen_card_object)
+            break
+
+
+
+
+    if chosen_card_object:
+        time_at_play = time.strftime("%I:%M:%S %p")
+        time.sleep(1)
+        print(f"Player 1 {chosen_card_object} at {time_at_play}.")
+
+
+play_round(player_1_hand, player_2_hand)
