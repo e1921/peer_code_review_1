@@ -32,7 +32,9 @@ class Card:
         # how a card will look when printed
         return f"{self.value} of {self.suit}"
     def rank(self):
-        "returns the numerical rank of the card"
+        """
+        returns the numerical rank of the card
+        """
         return value_rank[self.value]
 
 def build_deck():
@@ -52,10 +54,10 @@ deck = build_deck()
 shuffled_deck(deck)
 
 print("Shuffling the deck..")
-time.sleep(1)
+time.sleep(2)
 
 print("Dealing cards..")
-time.sleep(1)
+time.sleep(2)
 
 
 player_1_hand = deck[:8]
@@ -63,17 +65,20 @@ player_2_hand = deck[8:16]
 deck = deck[16:]
 
 
-for card in deck[:8]:
-    print(card)
 
 def play_round(player_1_hand, player_2_hand):
+    """
+    plays one round of the game where player 1 chooses a card from their hand to play
+    
+    returns the card chosen by player 1 and what time they chose it
+    """
     print("New round")
     print("Player 1's hand: ")
     for card in player_1_hand:
         print(card)
 
-    print("Player 1 is thinkning..")
-    time.sleep(2)
+    print("Player 1 is thinking..")
+    time.sleep(3)
 
     relevant_cards = [str(card) for card in player_1_hand]
 
@@ -98,7 +103,7 @@ def play_round(player_1_hand, player_2_hand):
     if chosen_card_object:
         time_at_play = time.strftime("%I:%M:%S %p")
         time.sleep(1)
-        print(f"Player 1 {chosen_card_object} at {time_at_play}.")
+        print(f"Player 1 played {chosen_card_object} at {time_at_play}.")
 
 
 play_round(player_1_hand, player_2_hand)
