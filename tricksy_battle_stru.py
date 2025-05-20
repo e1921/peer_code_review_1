@@ -21,6 +21,9 @@ value_rank = {
 }
 
 class Card:
+    """
+    represents a card with a value and suit
+    """
     def __init__(self, value, suit):
         self.value = value
         self.suit = suit
@@ -28,10 +31,13 @@ class Card:
         # how a card will look when printed
         return f"{self.value} of {self.suit}"
     def rank(self):
-        # returns the numerical value
+        "returns the numerical rank of the card"
         return value_rank[self.value]
 
 def build_deck():
+    """
+    builds/returns 48 card deck with no kings
+    """
     deck = []  # empty list to hold the cards
     for suit in suits:  # 4 each suit
         for value in values:  # 4 each value
