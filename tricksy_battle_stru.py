@@ -21,6 +21,54 @@ value_rank = {
     'Queen': 12
 }
 
+def build_deck():
+    """
+    builds/returns 48 card deck with no kings
+    """
+    deck = []  # empty list to hold the cards
+    for suit in suits:  # 4 each suit
+        for value in values:  # 4 each value
+            deck.append(value, suit)  # add the lists together
+    return deck  # return the deck of cards
+
+
+def printed_card(card):
+    """card tuple given (value, suit), returns string"""
+    return card[0] + "of" + card[1]
+
+def play_round(player_1_hand, player_2_hand):
+    """
+    plays one round of the game where player 1 chooses a card from their hand to play
+    
+    returns the card chosen by player 1 and what time they chose it
+    """
+    print("New round")
+    print("Player 1's hand: ")
+    for card in player_1_hand:
+        print(printed_card(card))
+              
+        print("Player 1 is thinking..")
+        time.sleep(3)
+
+    relevant_cards = [printed_card(card) for card in player_1_hand]
+
+    chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}\n")
+
+    while chosen_card not in relevant_cards:
+            print("Chosen card not in your hand, please choose another: ")
+            chosen_card = input("Pick what card you want to play!: ")
+
+
+    for card in player_1_hand:
+            if str(printed_card(card)) == chosen_card:
+                chosen_card = card
+                # print("Player 1 played this card:", chosen_card_object)
+                break
+            
+    time_at_play = time.strftime("%I:%M:%S %p")
+    print(f"Player 1 played {chosen_card} at {time_at_play}.")
+    return chosen_card, time_at_play
+
 class Card:
     """
     represents a card with a value and suit
