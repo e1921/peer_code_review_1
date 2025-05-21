@@ -70,7 +70,9 @@ def play_round(player_1_hand, player_2_hand): # all operations of one round
     relevant_cards = [printed_card(card) for card in player_1_hand]
 
     chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}\n") # joins all cards in hand 
-
+# Currently, the player's input must exactly match the card string, including capitalization and spaces.
+# This strict matching might lead to user frustration if they make minor mistakes in typing.
+# Making the input check case-insensitive and trimming extra spaces could improve usability and the overall user experience.    
     while chosen_card not in relevant_cards: # checking for existence of input in the hand
             print("Chosen card not in your hand, please choose another: ")
             chosen_card = input("Pick what card you want to play!: ")
