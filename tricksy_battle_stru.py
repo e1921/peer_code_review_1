@@ -28,13 +28,30 @@ def build_deck():
     deck = []  # empty list to hold the cards
     for suit in suits:  # 4 each suit
         for value in values:  # 4 each value
-            deck.append(value, suit)  # add the lists together
+            deck.append((value, suit))  # add the lists together
     return deck  # return the deck of cards
 
+deck = build_deck()
+random.shuffle(deck) # shuffles list
+
+# print("test for proper deck length of 48: ", len(build_deck))
+
+print("Shuffling the deck..")
+time.sleep(2)
+
+
+print("Dealing cards..")
+time.sleep(2)
+
+player_1_hand = deck[:8]
+player_2_hand = deck[8:16]
+deck = deck[16:]
 
 def printed_card(card):
-    """card tuple given (value, suit), returns string"""
-    return card[0] + "of" + card[1]
+    """
+    card tuple given (value, suit), returns string
+    """
+    return card[0] + " of " + card[1]
 
 def play_round(player_1_hand, player_2_hand):
     """
@@ -47,8 +64,8 @@ def play_round(player_1_hand, player_2_hand):
     for card in player_1_hand:
         print(printed_card(card))
               
-        print("Player 1 is thinking..")
-        time.sleep(3)
+    print("Player 1 is thinking..")
+    time.sleep(3)
 
     relevant_cards = [printed_card(card) for card in player_1_hand]
 
@@ -66,6 +83,8 @@ def play_round(player_1_hand, player_2_hand):
                 break
             
     time_at_play = time.strftime("%I:%M:%S %p")
-    print(f"Player 1 played {chosen_card} at {time_at_play}.")
+    print(f"Player 1 played {printed_card(chosen_card)} at {time_at_play}.")
     return chosen_card, time_at_play
 
+
+play_round(player_1_hand, player_2_hand)
