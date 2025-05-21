@@ -21,7 +21,7 @@ value_rank = {
     'Queen': 12
 }
 
-def build_deck():
+def build_deck(): # creating a deck using the lists just made
     """
     builds/returns 48 card deck with no kings
     """
@@ -34,7 +34,7 @@ def build_deck():
 deck = build_deck()
 random.shuffle(deck) # shuffles list
 
-# print("test for proper deck length of 48: ", len(build_deck))
+# test # print("test for proper deck length of 48: ", len(build_deck))
 
 print("Shuffling the deck..")
 time.sleep(2)
@@ -53,7 +53,7 @@ def printed_card(card):
     """
     return card[0] + " of " + card[1]
 
-def play_round(player_1_hand, player_2_hand):
+def play_round(player_1_hand, player_2_hand): # all operations of one round
     """
     plays one round of the game where player 1 chooses a card from their hand to play
     
@@ -69,20 +69,19 @@ def play_round(player_1_hand, player_2_hand):
 
     relevant_cards = [printed_card(card) for card in player_1_hand]
 
-    chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}\n")
+    chosen_card = input(f"Pick what card you want to play: {', '.join(relevant_cards)}\n") # joins all cards in hand 
 
-    while chosen_card not in relevant_cards:
+    while chosen_card not in relevant_cards: # checking for existence of input in the hand
             print("Chosen card not in your hand, please choose another: ")
             chosen_card = input("Pick what card you want to play!: ")
 
 
-    for card in player_1_hand:
+    for card in player_1_hand: # break input loop if chosen card is found in hand
             if str(printed_card(card)) == chosen_card:
                 chosen_card = card
-                # print("Player 1 played this card:", chosen_card_object)
                 break
             
-    time_at_play = time.strftime("%I:%M:%S %p")
+    time_at_play = time.strftime("%I:%M:%S %p") # time stamp for hour, minute, and second
     print(f"Player 1 played {printed_card(chosen_card)} at {time_at_play}.")
     return chosen_card, time_at_play
 
